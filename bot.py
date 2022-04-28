@@ -11,7 +11,7 @@ from config import TOKEN, ADMIN_ID
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 db = WorkDB('db.db')
-answer = ['UhxPb*EW@1%3', '3iGgwmFC3p~U', 'HZBIuo7$YnrT', 'IlYY0aDKOSIN', '8OOXhH*jMVX@', 'UJT*|XDhokjd', '~6ga0Ec6Z|Ji', 'w%Zdm09@fpDe', '|{c1|aX3*PfO', '#a9w67ir#}TL']
+answer = ['U3HI8U~w|#kA', 'UhxPb*EW@1%3', '3iGgwmFC3p~U', 'HZBIuo7$YnrT', 'IlYY0aDKOSIN', '8OOXhH*jMVX@', 'UJT*|XDhokjd', '~6ga0Ec6Z|Ji', 'w%Zdm09@fpDe', '|{c1|aX3*PfO', '#a9w67ir#}TL']
 @dp.message_handler(commands=['start'])
 async def process_start_command(msg: types.Message):
     if db.check_user(msg.from_user.id) == False:
