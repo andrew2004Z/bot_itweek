@@ -56,3 +56,13 @@ class WorkDB:
             return self.cursor.execute('''UPDATE `answer` SET `answer` = ? WHERE `id` = ?''',
                                        (str(answer), user_id))
 
+
+    def get_top_rating(self):
+        get_q = f'SELECT * FROM users;'
+        with self.connection:
+            result = self.cursor.execute(get_q).fetchall()
+            all_users = []
+            for item in result:
+                all_users.append([item[0], item[1], item[2]])
+            print(all_users)
+            return all_users

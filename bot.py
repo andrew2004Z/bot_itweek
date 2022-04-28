@@ -5,7 +5,7 @@ from aiogram.utils import executor
 from sql import WorkDB
 from functions import *
 
-from config import TOKEN, ADMIN_ID
+from config import TOKEN, ADMIN_ID, file
 
 
 bot = Bot(token=TOKEN)
@@ -16,8 +16,11 @@ answer = ['U3HI8U~w|#kA', 'UhxPb*EW@1%3', '3iGgwmFC3p~U', 'HZBIuo7$YnrT', 'IlYY0
 async def process_start_command(msg: types.Message):
     if db.check_user(msg.from_user.id) == False:
         db.create_user(msg.from_user.id, msg.from_user.username, 0)
-        db.create_answer(msg.from_user.id, str(a))
+        db.create_answer(msg.from_user.id, str(answer))
     await msg.reply("Привет!\nНапиши мне что-нибудь!")
+    for i in file:
+        await bot.send_photo(msg.from_user.id, i)
+
 
 @dp.message_handler(commands=['static'])
 async def process_start_command(msg: types.Message):
@@ -27,7 +30,7 @@ async def process_start_command(msg: types.Message):
         sp = []
         for j, i in enumerate(raiting):
             if str(i[2]) != '0':
-                sp.append(f'{j}. {i[1]} : {i[2]}')
+                sp.append(f'{j+1}. {i[1]} : {i[2]}')
         await bot.send_message(msg.from_user.id, '\n'.join(sp))
         #print(db.ge)
     else:
